@@ -10,7 +10,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h5 class="m-b-10">Airport Report</h5>
+                        <h5 class="m-b-10">Flights Report</h5>
                     </div>
                 </div>
                 
@@ -19,8 +19,8 @@
                         <li class="breadcrumb-item">
                             <i class="fa fa-home"></i>
                         </li>
-                        <li class="breadcrumb-item">Airport</li>
-                        <li class="breadcrumb-item">View All Airports</li>
+                        <li class="breadcrumb-item">Flights</li>
+                        <li class="breadcrumb-item">View/Update Flights Record</li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>All Airports</h5>
+                                    <h5>All Flights</h5>
                                     <div class="card-header-right">
                                         <ul class="list-unstyled card-option">
                                             <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -52,17 +52,25 @@
                                         <table class="table table-hover">
                                             <thead>
                 <tr align="center">
-					<th>Airport Code</th>
-					<th>Airport Location</th>
-					<!-- ->th>Enquire</th-->
+					<th>Flight Number</th>
+					<th>Carrier Name</th>
+					<th>Seat Capacity</th>
+					<th>Route Id</th>
+					<th>Departure Time</th>
+					<th>Arrival Time</th>					
+					<th>Update</th>
 				</tr>
             </thead>
                                             <tbody>
-                <c:forEach var="airport" items="${list}">
+                <c:forEach var="flight" items="${flights}">
                     <tr align="center">
-                        <td>${airport.airportCode}</td>
-						<td>${airport.airportLocation}</td>
-						<!-- ->td><a href="/viewSingleAirport/${airport.airportCode}" class="btn btn-primary waves-effect waves-light">Enquire</a></td-->
+                        <td>${flight.flightNumber}</td>
+						<td>${flight.carrierName}</td>
+						<td>${flight.seatCapacity}</td>
+						<td>${flight.routeId}</td>
+						<td>${flight.departureTime}</td>
+						<td>${flight.arrivalTime}</td>						
+						<td><a href="/updateFlight/${flight.flightNumber}" class="btn btn-primary waves-effect waves-light">Update</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

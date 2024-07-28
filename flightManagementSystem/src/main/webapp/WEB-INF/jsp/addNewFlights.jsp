@@ -43,7 +43,7 @@
                                             <div class="col-sm-4">
                                                 <form:input type="text" id="flightNumber" path="flightNumber" class="form-control" placeholder="Enter Flight Id" required="true"/>
                                             </div>
-                                            <label for="carrierName" class="col-sm-2 col-form-label">Enter Airlines Name:</label>
+                                            <label for="carrierName" class="col-sm-2 col-form-label">Enter Carrier Name:</label>
                                             <div class="col-sm-4">
                                                 <form:input type="text" id="carrierName" path="carrierName" class="form-control" placeholder="Enter Airlines Name" required="true"/>
                                             </div>

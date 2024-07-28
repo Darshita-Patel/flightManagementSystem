@@ -30,14 +30,20 @@ public class FlightDaoImpl implements FlightDao {
 		return repository.findAll();
 	}
 
-	/*@Override
+	@Override
 	public List<Long> findAllFlightNumbers() {
 		return repository.findAllFlightNumbers();
-	}*/
+	}
 
 	@Override
 	public List<Flight> findByRouteId(Long routeId) {
 		return repository.findByRouteId(routeId);
+	}
+
+	@Override
+	public List<Object[]> findFlightsByDate(String date) {
+		// TODO Auto-generated method stub
+		return repository.findFlightsByDate(date);
 	}
 	
 }

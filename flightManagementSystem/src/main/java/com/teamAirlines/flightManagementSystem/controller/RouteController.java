@@ -3,6 +3,8 @@ package com.teamAirlines.flightManagementSystem.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,22 +12,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.teamAirlines.flightManagementSystem.bean.Flight;
 import com.teamAirlines.flightManagementSystem.bean.Route;
 import com.teamAirlines.flightManagementSystem.dao.AirportDao;
-import com.teamAirlines.flightManagementSystem.dao.FlightDao;
 import com.teamAirlines.flightManagementSystem.dao.RouteDao;
+import com.teamAirlines.flightManagementSystem.exception.DuplicateRouteException;
 import com.teamAirlines.flightManagementSystem.service.RouteService;
 
+@ControllerAdvice
 @RestController
 public class RouteController {
 	
 	@Autowired
 	private AirportDao airportDao;	
-	
-	@Autowired
-	private FlightDao flightDao;
-	
+		
 	@Autowired
 	private RouteDao routeDao;
 	
@@ -50,10 +49,14 @@ public class RouteController {
 		 String destinationCode = airportDao.findAirportCodeByLocation(route1.getDestinationAirportCode());
 		 route1.setSourceAirportCode(sourceCode);
 		 route1.setDestinationAirportCode(destinationCode);
+		 Route route = routeDao.findRouteBySourceAndDestination(sourceCode, destinationCode);
+		 if(route != null) {
+			 throw new DuplicateRouteException();
+		 }
 		 Route route2 = routeService.createReturnRoute(route1);
 		 routeDao.addRoute(route1);
 		 routeDao.addRoute(route2);
-		 return new ModelAndView("indexAdmin");
+		 return new ModelAndView("redirect:/index");
 	 }
 	 
 	 @GetMapping("/viewAllRoutes")
@@ -64,11 +67,22 @@ public class RouteController {
 			return mv;
 		}
 	 
-	 /*@GetMapping("/viewFlightOnRoute/{id}")
+	 @GetMapping("/updateRoute/{id}")
 	 public ModelAndView showFlightOnRoutePage(@PathVariable("id") Long id) {
-	     List <Flight> li = flightDao.findByRouteId(id);
-	     ModelAndView mv = new ModelAndView("viewFlightOnRoute");
-	     mv.addObject("list", li);
+	     Route route = routeDao.showRoute(id);
+	     ModelAndView mv = new ModelAndView("singleRouteDetails");
+	     mv.addObject("route", route);
 	     return mv;
-	 }*/
+	 }
+	 
+	 @PostMapping("/saveRouteUpdate")
+		public ModelAndView showUpdateRouteSuccessfulPage(@ModelAttribute("route") Route route) {
+			routeDao.addRoute(route);
+			return new ModelAndView("redirect:/viewAllRoutes");
+		}
+	 
+	 @ExceptionHandler(value = DuplicateRouteException.class)
+	 public ModelAndView handlingDuplicateRouteException(DuplicateRouteException duplicateRouteException) {
+		 return new ModelAndView("duplicateRouteError");
+	 }
 }

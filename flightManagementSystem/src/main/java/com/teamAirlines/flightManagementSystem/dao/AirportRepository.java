@@ -16,4 +16,7 @@ public interface AirportRepository extends JpaRepository<Airport, String>{
 	
 	@Query("select airportCode from Airport where airportLocation=?1")
 	public String findAirportCodeByLocation(String airportLocation);
+	
+	@Query("select airportLocation from Airport where airportCode=?1")
+	public String findAirportLocationByCode(String airportCode);
 }

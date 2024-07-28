@@ -11,8 +11,8 @@
         padding: 0;
     }
     .container {
-        width: 80%;
-        margin: 100px 40px 50px 300px;
+        width: 77%;
+        margin: 100px 40px 50px 270px;
         padding: 20px;
         background-color: #fff;
         border-radius: 8px;
@@ -114,11 +114,16 @@
     }
 
     function checkJourneyDate() {
-        const journeyDateInput = document.querySelector("input[name='journeyDate']");
-        const defaultDate = journeyDateInput.defaultValue;
+    	const journeyDateInput = document.querySelector("input[name='journeyDate']");
+        const selectedDate = journeyDateInput.value;
         const currentDate = new Date().toISOString().split('T')[0];
 
-        if (journeyDateInput.value === defaultDate && defaultDate === currentDate) {
+        if (selectedDate < currentDate) {
+            alert("You cannot select a past date. Please choose a valid journey date.");
+            return false;
+        }
+
+        if (selectedDate === currentDate) {
             return confirm("The journey date is set to the current date. Do you want to proceed?");
         }
 
@@ -149,7 +154,7 @@
             <label>To:</label>
             <span>${toAirport}</span>
             <label>Journey Date:</label>
-            <input type="date" name="journeyDate" value="<fmt:formatDate value='${journeyDate}' pattern='yyyy-MM-dd' />" required class="journey-date" />
+            <input type="date" name="journeyDate" value="<fmt:formatDate value='${journeyDate}' pattern='yyyy-MM-dd' />" required="true" class="journey-date" />
         </div>
         <div class="header">
             <h2>Enter Passenger Details</h2>
@@ -174,7 +179,6 @@
         <button type="submit" class="btn">Submit</button>
     </form:form>
     
-    <!-- Form to navigate back to the flights list -->
     <form action="/flightSearch" method="post">
         <input type="hidden" name="fromCity" value="${fromAirport}">
         <input type="hidden" name="toCity" value="${toAirport}">
@@ -183,3 +187,4 @@
 </div>
 
 <%@ include file="footer.jsp" %>
+

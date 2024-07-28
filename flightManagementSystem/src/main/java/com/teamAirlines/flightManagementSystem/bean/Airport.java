@@ -6,12 +6,13 @@ import javax.persistence.Id;
 @Entity
 public class Airport {
 	
-	public Airport() {
-		System.out.println("New Object Created");
-	}
 	@Id
 	private String airportCode;
 	private String airportLocation;
+
+	public Airport() {
+		super();
+	}
 	
 	public Airport(String airportCode, String airportLocation) {
 		super();
@@ -30,10 +31,5 @@ public class Airport {
 	}
 	public void setAirportLocation(String airportLocation) {
 		this.airportLocation = airportLocation;
-	}
-
-	@Override
-	public String toString() {
-		return "Airport [airportCode=" + airportCode + ", airportLocation=" + airportLocation + "]";
 	}
 }

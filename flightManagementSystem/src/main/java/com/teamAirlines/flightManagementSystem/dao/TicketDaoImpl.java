@@ -1,5 +1,7 @@
 package com.teamAirlines.flightManagementSystem.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,21 @@ public class TicketDaoImpl implements TicketDao {
 		else
 			val = val + 1;
 		return val;
+	}
+
+	@Override
+	public Ticket findByTicketNumber(Long ticketNumber) {
+		return repository.findByTicketNumber(ticketNumber);
+	}
+
+	@Override
+	public void cancelTicket(Long ticketNumber) {
+		repository.deleteById(ticketNumber);
+	}
+
+	@Override
+	public List<Ticket> showAllTickets() {
+		return repository.findAll();
 	}
 
 }

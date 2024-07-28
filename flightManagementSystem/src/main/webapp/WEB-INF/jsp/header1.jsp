@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,6 +171,29 @@
                                     <span class="pcoded-mcaret"></span>
                             	</a>
                             </li>
-                            </ul>                         
+                            </ul>
+                            
+                            <ul class="pcoded-item pcoded-left-item">
+                            <li class=" ">
+                            	<a href="/cancelBooking" class="waves-effect waves-dark">
+                            		<span class="pcoded-micon"><i class="ti-location-arrow"></i><b>BC</b></span>
+                                    <span class="pcoded-mtext">Cancel Bookings</span>
+                                    <span class="pcoded-mcaret"></span>
+                            	</a>
+                            </li>
+                            </ul> 
+                            
+                            <ul class="pcoded-item pcoded-left-item">
+                            <li class=" ">
+                            	<a href="/feedback" class="waves-effect waves-dark">
+                            		<span class="pcoded-micon"><i class="ti-location-arrow"></i><b>BC</b></span>
+                                    <span class="pcoded-mtext">Feedback</span>
+                                    <span class="pcoded-mcaret"></span>
+                            	</a>
+                            </li>
+                            </ul>                        
                         </div>
                     </nav>
+                
+                    
+                

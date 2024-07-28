@@ -12,7 +12,7 @@ public class Route {
 	private Double ticketCost;
 	
 	public Route() {
-		System.out.println("New Object of Route Created");
+		super();
 	}
 
 	public Route(Long routeId, String sourceAirportCode, String destinationAirportCode, Double ticketCost) {

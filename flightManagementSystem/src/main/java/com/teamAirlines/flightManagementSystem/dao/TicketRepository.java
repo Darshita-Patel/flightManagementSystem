@@ -9,4 +9,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>{
 	@Query("select max(ticketNumber) from Ticket")
 	public Long findLastTicketNumber();
 	
+	@Query("select t from Ticket t where t.ticketNumber=?1")
+	public Ticket findByTicketNumber(Long ticketNumber);
+	
 }

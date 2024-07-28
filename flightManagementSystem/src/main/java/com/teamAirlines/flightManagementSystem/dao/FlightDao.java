@@ -8,6 +8,7 @@ public interface FlightDao {
 	public void addFlight(Flight flight);
 	public List<Flight> showAllFlights();
 	public Flight showFlight(Long id);
-	//public List<Long> findAllFlightNumbers();
+	public List<Long> findAllFlightNumbers();
 	public List<Flight> findByRouteId(Long routeId);
+	public List<Object[]> findFlightsByDate(String date);
 }

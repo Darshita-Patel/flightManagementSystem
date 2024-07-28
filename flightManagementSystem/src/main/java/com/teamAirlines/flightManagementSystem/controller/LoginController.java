@@ -30,15 +30,14 @@ public class LoginController {
 		return new ModelAndView("loginError");
 	}
 	
-
 	@GetMapping("/index")
 	public ModelAndView showIndexPage() {
 		String indexPage = "";
 		String userType = service.getType();
 		if(userType.equalsIgnoreCase("Admin"))
-				indexPage = "indexAdmin";
+			indexPage="indexAdmin";
 		else if(userType.equalsIgnoreCase("Customer"))
-			indexPage = "indexCustomer";
+			indexPage="indexCustomer";
 		return new ModelAndView(indexPage);
 	}
 	

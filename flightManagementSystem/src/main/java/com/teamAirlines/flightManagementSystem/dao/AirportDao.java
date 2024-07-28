@@ -11,4 +11,5 @@ public interface AirportDao {
 	public List<String> findAllAirportCodes();
 	public List<String> findAllAirportLocations();
 	public String findAirportCodeByLocation(String airportLocation);
+	public String findAirportLocationByCode(String airportCode);
 }

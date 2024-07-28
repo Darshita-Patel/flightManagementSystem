@@ -46,11 +46,5 @@ public class FlightUser extends User{
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	@Override
-	public String toString() {
-		return "FlightUser [username=" + username + ", password=" + password + ", type=" + type + "]";
-	}
-	
+	}	
 }

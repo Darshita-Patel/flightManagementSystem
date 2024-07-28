@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,18 +22,18 @@
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!-- waves.css -->
-    <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
     <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap/css/bootstrap.min.css">
     <!-- themify-icons line icon -->
-    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="/assets/icon/themify-icons/themify-icons.css">
     <!-- ico font -->
-    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="/assets/icon/icofont/css/icofont.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/icon/font-awesome/css/font-awesome.min.css">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/jquery.mCustomScrollbar.css">
 
 </head>
 
@@ -174,7 +175,7 @@
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-location-arrow"></i><b>BC</b></span>
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>BC</b></span>
                                         <span class="pcoded-mtext">Airport</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
@@ -197,32 +198,7 @@
                                                 </ul>
                                 </li>
                             </ul>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>BC</b></span>
-                                        <span class="pcoded-mtext">Flights</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="/addFlights" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Add New Flight</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="/viewAllFlights" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">View All Flights</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        
-                                                </ul>
-                                </li>
-                            </ul>
+                            
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -249,14 +225,71 @@
                                                 </ul>
                                 </li>
                             </ul>
+                            
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>BC</b></span>
+                                        <span class="pcoded-mtext">Flights</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="/addFlights" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Add New Flight</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/viewAllFlights" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">View All Flights</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/updateFlights" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">View/Update Flights Record</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        
+                                                </ul>
+                                </li>
+                            </ul>
+
                             <ul class="pcoded-item pcoded-left-item">
                             <li class=" ">
-                            	<a href="/flightSearch" class="waves-effect waves-dark">
+                            	<a href="/viewAllTickets" class="waves-effect waves-dark">
                             		<span class="pcoded-micon"><i class="ti-location-arrow"></i><b>BC</b></span>
-                                    <span class="pcoded-mtext">Book Flight</span>
+                                    <span class="pcoded-mtext">Tickets</span>
                                     <span class="pcoded-mcaret"></span>
                             	</a>
                             </li>
-                            </ul> 
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                            <li class=" ">
+                            	<a href="/viewAllPassengerDetails" class="waves-effect waves-dark">
+                            		<span class="pcoded-micon"><i class="ti-location-arrow"></i><b>BC</b></span>
+                                    <span class="pcoded-mtext">Passengers </span>
+                                    <span class="pcoded-mcaret"></span>
+                            	</a>
+                            </li>
+                            </ul>
+                            
+                             <ul class="pcoded-item pcoded-left-item">
+                            <li class=" ">
+                            	<a href="/viewAllFeedbacks" class="waves-effect waves-dark">
+                            		<span class="pcoded-micon"><i class="ti-location-arrow"></i><b>BC</b></span>
+                                    <span class="pcoded-mtext">Feedbacks</span>
+                                    <span class="pcoded-mcaret"></span>
+                            	</a>
+                            </li>
+                            </ul>
                         </div>
                     </nav>
+              
+                    
+                

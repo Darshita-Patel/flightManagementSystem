@@ -11,18 +11,24 @@ public class Ticket {
 	private Long flightNumber;
 	private String carrierName;
 	private Double totalAmount;
+	private String date;
+	
 	public Ticket() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Ticket(Long ticketNumber, Long routeId, Long flightNumber, String carrierName, Double totalAmount) {
+	
+	public Ticket(Long ticketNumber, Long routeId, Long flightNumber, String carrierName, Double totalAmount,
+			String date) {
 		super();
 		this.ticketNumber = ticketNumber;
 		this.routeId = routeId;
 		this.flightNumber = flightNumber;
 		this.carrierName = carrierName;
 		this.totalAmount = totalAmount;
+		this.date = date;
 	}
+
 	public Long getTicketNumber() {
 		return ticketNumber;
 	}
@@ -53,4 +59,13 @@ public class Ticket {
 	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 }

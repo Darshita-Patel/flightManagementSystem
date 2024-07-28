@@ -13,8 +13,10 @@ public class Flight {
 	private String departureTime;
 	private String arrivalTime;
 	private Integer seatBooked;
+	
 	public Flight() {
-		System.out.println("New Object of Flight Created");
+		super();
+		this.seatBooked = 0;
 	}
 
 	public Flight(Long flightNumber, String carrierName, Long routeId, Integer seatCapacity, String departureTime,

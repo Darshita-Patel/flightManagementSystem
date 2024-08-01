@@ -1,7 +1,14 @@
 package com.teamAirlines.flightManagementSystem.controller;
 
+import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,13 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.teamAirlines.flightManagementSystem.bean.FlightUser;
+import com.teamAirlines.flightManagementSystem.dao.AirportDao;
+import com.teamAirlines.flightManagementSystem.dao.FlightUserRepository;
+import com.teamAirlines.flightManagementSystem.exception.DuplicateUsernameException;
 import com.teamAirlines.flightManagementSystem.service.FlightUserService;
 
+@ControllerAdvice
 @RestController
 public class LoginController {
 	
 	@Autowired
+	private FlightUserRepository repository;
+	
+	@Autowired
 	private	FlightUserService service;
+	
+	@Autowired
+	private AirportDao airportDao;
 	
 	@Autowired 
 	private BCryptPasswordEncoder bCrypt;
@@ -31,14 +48,19 @@ public class LoginController {
 	}
 	
 	@GetMapping("/index")
-	public ModelAndView showIndexPage() {
+	public ModelAndView showIndexPage(HttpServletRequest request) {
 		String indexPage = "";
+		String username = request.getUserPrincipal().getName();
+		List<String> locationList = airportDao.findAllAirportLocations();
 		String userType = service.getType();
 		if(userType.equalsIgnoreCase("Admin"))
 			indexPage="indexAdmin";
 		else if(userType.equalsIgnoreCase("Customer"))
 			indexPage="indexCustomer";
-		return new ModelAndView(indexPage);
+		ModelAndView mv = new ModelAndView(indexPage);
+		mv.addObject("username", username);
+		mv.addObject("locationList", locationList);
+		return mv;
 	}
 	
 	@GetMapping("/signup")
@@ -51,7 +73,11 @@ public class LoginController {
 	
 	@PostMapping("/signup")
 	public ModelAndView saveSignUpPage(@ModelAttribute("userRecord") FlightUser user) {
-		String encodedPassword = bCrypt.encode(user.getPassword()); // encryptes the password
+		String encodedPassword = bCrypt.encode(user.getPassword());
+		Optional<FlightUser> temp = repository.findById(user.getUsername());		
+		if(temp.isPresent()) {
+			throw new DuplicateUsernameException();
+		}
 		FlightUser newUser=new FlightUser();
 		newUser.setUsername(user.getUsername());
 		newUser.setPassword(encodedPassword);
@@ -65,5 +91,8 @@ public class LoginController {
 		return new ModelAndView("loginPage");
 	}
 	
-		
+	@ExceptionHandler(value = DuplicateUsernameException.class)
+	 public ModelAndView handlingDuplicateUsernameException(DuplicateUsernameException duplicateUsernameException) {
+		 return new ModelAndView("duplicateUsernameError");
+	 }
 }

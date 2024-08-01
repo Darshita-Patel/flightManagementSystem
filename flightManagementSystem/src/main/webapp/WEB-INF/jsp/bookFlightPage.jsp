@@ -4,15 +4,9 @@
 <%@ include file="header1.jsp" %>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        width: 77%;
-        margin: 100px 40px 50px 270px;
+    .bookingcontainer {
+        width: 90%;
+        margin: 20px auto;
         padding: 20px;
         background-color: #fff;
         border-radius: 8px;
@@ -25,7 +19,6 @@
     .header h1, .header h2 {
         margin: 0;
         padding-bottom: 10px;
-        border-bottom: 2px solid #ddd;
     }
     .details {
         display: grid;
@@ -69,22 +62,85 @@
     .journey-date {
         width: 120px;
     }
-    .btn {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        color: #fff;
-        background-color: #007bff;
-        border: none;
-        border-radius: 5px;
-        text-align: center;
-        text-decoration: none;
-        margin-top: 20px;
+    
+    .btn{
+        display: inline-block;
+    	color: #fff;
+    	border: none;
+    	border-radius: 4px;
+    	text-decoration: none;
+    	text-align: center;
+    	margin: 10px 5px;
+    	cursor: pointer;
     }
-    .btn:hover {
-        background-color: #0056b3;
-    }
+
 </style>
+
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+      <div class="container py-2">
+        <h2 class="title">Book Flight</h2>
+        <ul class="breadcrumbs-custom-path mt-2">
+          <li><a href="#url">Home</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Available Flights</li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Book Flight</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+<section class="w3l-contact" id="contact">
+<div class="bookingcontainer">
+    <div class="header">
+        <h1>Book Your Flight</h1>
+    </div>
+    <form:form id="bookingForm" action="/confirmBooking" method="post" modelAttribute="ticketRecord" onsubmit="return combinedValidation()">
+        <div class="details">
+            <label>Ticket Number:</label>
+            <span>${ticketRecord.ticketNumber}</span>
+            <label>Fare:</label>
+            <span><fmt:formatNumber value="${fare}" type="currency" currencySymbol="Rs " /></span>
+            <label>Airlines Name:</label>
+            <span>${ticketRecord.carrierName}</span>
+            <label>From:</label>
+            <span>${fromAirport}</span>
+            <label>Flight Number:</label>
+            <span>${ticketRecord.flightNumber}</span>
+            <label>To:</label>
+            <span>${toAirport}</span>
+            <label>Journey Date:</label>
+            <input type="date" name="journeyDate" value="<fmt:formatDate value='${journeyDate}' pattern='yyyy-MM-dd' />" required="true" class="journey-date" />
+        </div>
+        <div class="header">
+            <h2>Enter Passenger Details</h2>
+        </div>
+        <div id="passengerDetailsContainer">
+            <c:forEach var="i" begin="0" end="5">
+                <div class="passenger-details">
+                    <label>Name:</label>
+                    <input type="text" name="passengerDetails[${i}].name" value="--" />
+                    <label>Date of Birth:</label>
+                    <input type="date" name="passengerDetails[${i}].dob" />
+                </div>
+            </c:forEach>
+        </div>
+        <form:input type="hidden" name="ticketNumber" path="ticketNumber" value="${ticket.ticketNumber}" />
+        <form:input type="hidden" name="routeId" path="routeId" value="${ticket.routeId}" />
+        <form:input type="hidden" name="carrierName" path="carrierName" value="${ticket.carrierName}" />
+        <form:input type="hidden" name="flightNumber" path="flightNumber" value="${ticket.flightNumber}" />
+        <input type="hidden" name="fromAirport" value="${fromAirport}" />
+        <input type="hidden" name="toAirport" value="${toAirport}" />
+        <form:input type="hidden" name="fare" path="totalAmount" value="${fare}" />
+        <div class="form-row">
+        <form action="/flightSearch" method="post">
+        <input type="hidden" name="fromCity" value="${fromAirport}">
+        <input type="hidden" name="toCity" value="${toAirport}">
+        <button type="submit" class="btn btn-primary">Back to Flights</button>
+  		</form> 
+        <button type="submit" class="btn btn-secondary">Submit</button>
+     </div>
+	</form:form>
+</div>
+</section>
 <script>
     function validateForm() {
         const container = document.getElementById('passengerDetailsContainer');
@@ -134,57 +190,5 @@
         return validateForm() && checkJourneyDate();
     }
 </script>
-
-<div class="container">
-    <div class="header">
-        <h1>Book Your Flight</h1>
-    </div>
-    <form:form id="bookingForm" action="/confirmBooking" method="post" modelAttribute="ticketRecord" onsubmit="return combinedValidation()">
-        <div class="details">
-            <label>Ticket Number:</label>
-            <span>${ticketRecord.ticketNumber}</span>
-            <label>Fare:</label>
-            <span><fmt:formatNumber value="${fare}" type="currency" currencySymbol="Rs " /></span>
-            <label>Airlines Name:</label>
-            <span>${ticketRecord.carrierName}</span>
-            <label>From:</label>
-            <span>${fromAirport}</span>
-            <label>Flight Number:</label>
-            <span>${ticketRecord.flightNumber}</span>
-            <label>To:</label>
-            <span>${toAirport}</span>
-            <label>Journey Date:</label>
-            <input type="date" name="journeyDate" value="<fmt:formatDate value='${journeyDate}' pattern='yyyy-MM-dd' />" required="true" class="journey-date" />
-        </div>
-        <div class="header">
-            <h2>Enter Passenger Details</h2>
-        </div>
-        <div id="passengerDetailsContainer">
-            <c:forEach var="i" begin="0" end="5">
-                <div class="passenger-details">
-                    <label>Name:</label>
-                    <input type="text" name="passengerDetails[${i}].name" value="--" />
-                    <label>Date of Birth:</label>
-                    <input type="date" name="passengerDetails[${i}].dob" />
-                </div>
-            </c:forEach>
-        </div>
-        <form:input type="hidden" name="ticketNumber" path="ticketNumber" value="${ticket.ticketNumber}" />
-        <form:input type="hidden" name="routeId" path="routeId" value="${ticket.routeId}" />
-        <form:input type="hidden" name="carrierName" path="carrierName" value="${ticket.carrierName}" />
-        <form:input type="hidden" name="flightNumber" path="flightNumber" value="${ticket.flightNumber}" />
-        <input type="hidden" name="fromAirport" value="${fromAirport}" />
-        <input type="hidden" name="toAirport" value="${toAirport}" />
-        <form:input type="hidden" name="fare" path="totalAmount" value="${fare}" />
-        <button type="submit" class="btn">Submit</button>
-    </form:form>
-    
-    <form action="/flightSearch" method="post">
-        <input type="hidden" name="fromCity" value="${fromAirport}">
-        <input type="hidden" name="toCity" value="${toAirport}">
-        <button type="submit" class="btn">Back to Flights</button>
-    </form>
-</div>
-
-<%@ include file="footer.jsp" %>
+<%@ include file="footer1.jsp" %>
 

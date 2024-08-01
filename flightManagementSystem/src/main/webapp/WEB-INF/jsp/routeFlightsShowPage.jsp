@@ -7,8 +7,8 @@
 <style>
 
     .main-container {
-        width:78%;
-        margin: 100px 40px 20px 260px;
+        width:90%;
+        margin: 20px auto;
         max-width: 1200px;
         background-color: #fff;
         padding: 20px;
@@ -92,7 +92,17 @@
     }
 
 </style>
-
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+      <div class="container py-2">
+        <h2 class="title">Available Flights</h2>
+        <ul class="breadcrumbs-custom-path mt-2">
+          <li><a href="#url">Home</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Available Flights</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 <div class="main-container">
     <h1>Available Flights from ${fromAirport} to ${toAirport}</h1>
     <c:forEach var="flight" items="${flightList}">
@@ -122,11 +132,11 @@
             <div class="price-book-container">
                 <div class="price">Rs. ${ticketCost}</div>
                 <input type="hidden" name="ticketCost" value="${ticketCost}" />
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Book</button>
+                <button type="submit" class="btn btn-secondary">Book</button>
             </div>
         </form>
     </c:forEach>
-    <a href="/flightSearch" class="btn btn-secondary">Back</a>
+    <a href="/flightSearch" class="btn btn-primary waves-effect waves-light">Back</a>
 </div>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="footer1.jsp" %>

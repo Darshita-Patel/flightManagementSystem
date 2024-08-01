@@ -113,7 +113,7 @@
                             </div>
                         </div>
                         <a href="#">
-                             <span>Flight Management</span>
+                             <span>Airlines</span>
                          </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -135,7 +135,7 @@
                            
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <span>${flight_user.username}</span>
+                                    <span>${username}</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
@@ -244,7 +244,7 @@
                                         <li class=" ">
                                             <a href="/viewAllFlights" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">View All Flights</span>
+                                                <span class="pcoded-mtext">View Flights Datewise</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>

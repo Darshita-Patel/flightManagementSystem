@@ -88,8 +88,18 @@
 function checkFields(){
 	var sourceAirportCode = document.getElementById("sourceAirportCode").value;
 	var destinationAirportCode = document.getElementById("destinationAirportCode").value;
-    	
-	if (destinationAirportCode === sourceAirportCode){
+	var ticketCost = document.getElementById("ticketCost").value;
+
+    if(sourceAirportCode === ""){
+    	alert("Source Airport City is required.");
+    }
+    else if(destinationAirportCode === ""){
+    	alert("Destination Airport Ciy is required.");
+    }
+    else if(ticketCost === ""){
+    	alert("Ticket Cost is required.");
+    }
+    else if (destinationAirportCode === sourceAirportCode){
 		alert("Source Airport City and Destination Airport City cannot be same.");
 		return false;
 	} else {

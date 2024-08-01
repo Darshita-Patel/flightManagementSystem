@@ -83,7 +83,7 @@
               <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign in into your Account</h5>
               <div class="form-group">
                 <input type="text" id="username" name="username" class="form-control form-control-lg" placeholder="Enter Your Name" required>
-              </div>
+              </div>              
               <div class="form-group">
                 <div class="input-group">
                   <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter Your Password" required>

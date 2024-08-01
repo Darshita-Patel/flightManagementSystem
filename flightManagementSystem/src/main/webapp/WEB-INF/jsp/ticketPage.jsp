@@ -24,9 +24,9 @@ body {
     font-size: 24px;
 }
 
-.container {
-    width: 79%;
-    margin: 80px 0px 20px 250px;
+.ticketcontainer {
+    width: 90%;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -53,24 +53,38 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    border: 1px solid #cfd8dc;
 }
 
 .table-info th, .table-info td {
     padding: 10px;
-    border: 1px solid #8c8787;
+    border: 1px solid #cfd8dc;
     text-align: left;
+    color: #000000; 
 }
 
 .table-info th {
-    background-color: #f7f7f7;
+    background-color: #1a237e; 
+    color: #ffffff; 
+    font-weight: bold;
+}
+
+.table-info tr:nth-child(even) {
+    background-color: #e3f2fd;
+}
+
+.table-info tr:nth-child(odd) {
+    background-color: #ffffff; 
+}
+
+.table-info .highlight {
+    background-color: #f8bbd0;
     font-weight: bold;
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
     color: #fff;
-    background-color: #007bff;
     border: none;
     border-radius: 4px;
     text-decoration: none;
@@ -79,12 +93,21 @@ body {
     cursor: pointer;
 }
 
-.btn:hover {
-    background-color: #0056b3;
-}
 </style>
-
-    <div class="container">
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+      <div class="container py-2">
+        <h2 class="title">Confirmation</h2>
+        <ul class="breadcrumbs-custom-path mt-2">
+          <li><a href="#url">Home</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Available Flights</li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Book Flight</li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Ticket Confirmation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+    <div class="ticketcontainer">
         <div class="card">
             <h2>Ticket Confirmation</h2>
             <table class="table-info">
@@ -131,10 +154,10 @@ body {
             <form action="/flightSearch" method="post" style="display:inline;">
                 <input type="hidden" name="fromCity" value="${fromAirport}">
                 <input type="hidden" name="toCity" value="${toAirport}">
-                <button type="submit" class="btn">Back to Flights</button>
+                <button type="submit" class="btn btn-primary">Back to Flights</button>
             </form>
-            <a href="/payment" class="btn">Proceed to Pay</a>
+            <a href="/payment" class="btn btn-secondary">Proceed to Pay</a>
         </div>
     </div>
 
-<%@ include file = "footer.jsp" %>
+<%@ include file = "footer1.jsp" %>

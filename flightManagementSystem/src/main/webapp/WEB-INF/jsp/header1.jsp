@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!-- ->DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,35 +10,35 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- Meta -->
+    <!-- Meta ->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
     <meta name="author" content="Codedthemes" />
-    <!-- Favicon icon -->
+    <!-- Favicon icon ->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <!-- Google font-->
+    <!-- Google font->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    <!-- waves.css -->
+    <!-- waves.css ->
     <link rel="stylesheet" href="assets/pages/waves/css/waves.min.css" type="text/css" media="all">
-    <!-- Required Fremwork -->
+    <!-- Required Fremwork ->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap/css/bootstrap.min.css">
-    <!-- themify-icons line icon -->
+    <!-- themify-icons line icon ->
     <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
-    <!-- ico font -->
+    <!-- ico font ->
     <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
-    <!-- Font Awesome -->
+    <!-- Font Awesome ->
     <link rel="stylesheet" type="text/css" href="assets/icon/font-awesome/css/font-awesome.min.css">
-    <!-- Style.css -->
+    <!-- Style.css ->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
 
 </head>
 
 <body>
-    <!-- Pre-loader start -->
+    <!-- Pre-loader start ->
     <div class="theme-loader">
         <div class="loader-track">
             <div class="preloader-wrapper">
@@ -91,7 +91,7 @@
             </div>
         </div>
     </div>
-    <!-- Pre-loader end -->
+    <!-- Pre-loader end ->
     <div id="pcoded" class="pcoded">
         <div class="pcoded-overlay-box"></div>
         <div class="pcoded-container navbar-wrapper">
@@ -113,7 +113,7 @@
                             </div>
                         </div>
                         <a href="#">
-                             <span>Flight Management</span>
+                             <span>Airlines</span>
                          </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -135,7 +135,7 @@
                            
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
-                                    <span>${flight_user.username}</span>
+                                    <span>${username}</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
@@ -193,7 +193,74 @@
                             </li>
                             </ul>                        
                         </div>
-                    </nav>
+                    </nav-->
+                    
+<!doctype html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Airlines</title>
+  <!-- google fonts -->
+  <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- google fonts -->
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets2/css/style-starter.css">
+  <!-- Template CSS -->
+</head>
+
+<body>
+  <!--header-->
+  <header id="site-header" class="fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg stroke">
+        <h1><a class="navbar-brand mr-lg-5" href="/flightSearch">
+            Airlines
+          </a></h1>
+        <!-- if logo is image enable this   
+      <a class="navbar-brand" href="#index.html">
+          <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+      </a> -->
+        <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/flightSearch">Book Flights</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/cancelBooking">Cancel Bookings</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link" href="/feedback">Feedback</a>
+            </li>
+
+		<!--<li class="nav-item">
+              <a class="nav-link" href="/user-booking-history">Booking Detalis</a>
+            </li>-->
+		
+		
+		
+          </ul>
+        </div>
+        <div class="d-lg-block d-none">
+          <a href="/logout" class="btn btn-style btn-secondary">Logout</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+                    
                 
                     
                 

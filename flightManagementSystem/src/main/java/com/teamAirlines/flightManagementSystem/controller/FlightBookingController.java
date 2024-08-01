@@ -70,7 +70,7 @@ public class FlightBookingController {
 	@GetMapping("/flightSearch")
 	 public ModelAndView showRouteSelectPage() {
 		 List<String> locationList = airportDao.findAllAirportLocations();
-	     ModelAndView mv = new ModelAndView("routeSelectPage");
+	     ModelAndView mv = new ModelAndView("indexCustomer");
 	     mv.addObject("locationList", locationList);
 	     return mv;
 	 }

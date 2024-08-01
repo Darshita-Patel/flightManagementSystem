@@ -26,7 +26,7 @@
   
                 <form action="/cancelBooking" method="post" class="signin-form">
                 <label>Enter Ticket Number:</label>
-        		<input type="text" id="ticketNumber" name="ticketNumber" class="contact-input" required>
+        		<input type="number" id="ticketNumber" name="ticketNumber" class="contact-input" required>
                 <div class="form-group form-default form-static-label">
                 <a href="/index" class="btn btn-primary">Back</a>
                 <button type="submit" class="btn btn-secondary">Search</button>                                       

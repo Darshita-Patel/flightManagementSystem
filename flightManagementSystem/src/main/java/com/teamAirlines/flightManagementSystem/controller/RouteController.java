@@ -31,6 +31,7 @@ public class RouteController {
 	@Autowired
 	private RouteService routeService;
 	
+	// Display the page for adding a new route
 	@GetMapping("/addRoute")
 	 public ModelAndView showAddNewRoutePage() {
 		 Long newRouteId = routeDao.generateRouteId();
@@ -43,22 +44,29 @@ public class RouteController {
 	     return mv;
 	 }
 	 
+	// Handle adding a new route
 	 @PostMapping("/addRoute")
 	 public ModelAndView saveAddNewRoutePage(@ModelAttribute ("routeRecord") Route route1) {
+		// Convert airport locations to codes
 		 String sourceCode = airportDao.findAirportCodeByLocation(route1.getSourceAirportCode());
 		 String destinationCode = airportDao.findAirportCodeByLocation(route1.getDestinationAirportCode());
 		 route1.setSourceAirportCode(sourceCode);
 		 route1.setDestinationAirportCode(destinationCode);
+		 
+		// Check for duplicate route
 		 Route route = routeDao.findRouteBySourceAndDestination(sourceCode, destinationCode);
 		 if(route != null) {
 			 throw new DuplicateRouteException();
 		 }
+		 
+		 // Create and save the return route
 		 Route route2 = routeService.createReturnRoute(route1);
 		 routeDao.addRoute(route1);
 		 routeDao.addRoute(route2);
 		 return new ModelAndView("redirect:/index");
 	 }
 	 
+	// Display all routes
 	 @GetMapping("/viewAllRoutes")
 		public ModelAndView showViewAllSchedulesPage() {
 			List <Route> li = routeDao.showAllRoutes();
@@ -67,6 +75,7 @@ public class RouteController {
 			return mv;
 		}
 	 
+	// Display the page for updating a specific route
 	 @GetMapping("/updateRoute/{id}")
 	 public ModelAndView showFlightOnRoutePage(@PathVariable("id") Long id) {
 	     Route route = routeDao.showRoute(id);
@@ -75,12 +84,14 @@ public class RouteController {
 	     return mv;
 	 }
 	 
+	// Handle updating a route
 	 @PostMapping("/saveRouteUpdate")
 		public ModelAndView showUpdateRouteSuccessfulPage(@ModelAttribute("route") Route route) {
 			routeDao.addRoute(route);
 			return new ModelAndView("redirect:/viewAllRoutes");
 		}
 	 
+	// Handle DuplicateRouteException
 	 @ExceptionHandler(value = DuplicateRouteException.class)
 	 public ModelAndView handlingDuplicateRouteException(DuplicateRouteException duplicateRouteException) {
 		 return new ModelAndView("duplicateRouteError");

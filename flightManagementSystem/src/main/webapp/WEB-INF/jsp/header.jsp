@@ -161,29 +161,20 @@
                                 <div class="main-menu-header">
                                     </div>
                                 
-                            </div>
-                            
-                            <!--<ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="#" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b></b></span>
-                                        <span class="pcoded-mtext">airport</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                            </ul>-->
+                            </div>                            
+                    
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>BC</b></span>
-                                        <span class="pcoded-mtext">Airport</span>
+                                        <span class="pcoded-mtext">Airports</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class=" ">
                                             <a href="/newAirport" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Add New Airports</span>
+                                                <span class="pcoded-mtext">Add New Airport</span>
                                                 <span class="pcoded-mcaret"></span>
                                             </a>
                                         </li>
@@ -203,7 +194,7 @@
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)" class="waves-effect waves-dark">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>BC</b></span>
-                                        <span class="pcoded-mtext">Route</span>
+                                        <span class="pcoded-mtext">Routes</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">

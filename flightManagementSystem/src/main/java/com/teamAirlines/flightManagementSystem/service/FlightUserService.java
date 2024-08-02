@@ -15,18 +15,37 @@ public class FlightUserService implements UserDetailsService{
 	private FlightUserRepository repository;
 	private String type;
 	
-	//to save user details in database
+	/**
+     * Saves the user details in the database.
+     * 
+     * @param user : The FlightUser object containing user details.
+     */
 	public void save(FlightUser user) {
 		repository.save(user);
 	}
 	
+	/**
+     * Retrieves the type of the current user.
+     * 
+     * @return : The type of the current user.
+     */
 	public String getType() {
 		return type;
 	}
 	
+	  /**
+     * Loads the user by their username.
+     * 
+     * @param username : The username of the user to be loaded.
+     * @return UserDetails : The UserDetails object containing user information.
+     * @throws : UsernameNotFoundException if the user is not found.
+     */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
+		// Retrieve the user from the repository
 		FlightUser users = repository.findById(username).get();
+		
+		// Set the type for the current user
 		type = users.getType();
 		return users;
 	}

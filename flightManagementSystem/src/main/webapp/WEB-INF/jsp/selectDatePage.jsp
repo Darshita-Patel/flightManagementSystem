@@ -18,7 +18,9 @@
                         <li class="breadcrumb-item">
                             <i class="fa fa-home"></i>
                         </li>
-                        <li class="breadcrumb-item">View All Flights
+                        <li class="breadcrumb-item">Flights
+                        </li>
+                        <li class="breadcrumb-item">View Flights Datewise
                         </li>
                     </ul>
                 </div>

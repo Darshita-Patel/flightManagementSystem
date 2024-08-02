@@ -18,6 +18,15 @@ public class FlightService {
 	
 	@Autowired
 	private FlightDao flightDao;
+	
+	 /**
+     * Creates a return flight based on the given flight details.
+     * 
+     * @param flight : The original flight object.
+     * @param dtime : The departure time of the return flight.
+     * @param atime : The arrival time of the return flight.
+     * @return : The new return flight object.
+     */	
 	public Flight createReturnFlight(Flight flight, String dtime, String atime) {
 		Long newId = flight.getFlightNumber()+1;
 		Route route = routeDao.showRoute(flight.getRouteId());
@@ -27,6 +36,12 @@ public class FlightService {
 		return new Flight(newId,flight.getCarrierName(),route2.getRouteId(), flight.getSeatCapacity(),dtime,atime);
 	}
 	
+	 /**
+     * Retrieves flights by date and sets the number of seats booked for each flight.
+     * 
+     * @param date : The date for which flights are to be retrieved.
+     * @return : A list of flights for the given date.
+     */	
 	public List<Flight> getFlightsByDate(String date) {
         List<Object[]> results = flightDao.findFlightsByDate(date);
         List<Flight> flights = new ArrayList<>();
@@ -40,6 +55,9 @@ public class FlightService {
         return flights;
     }
 	
+	/**
+     * Sets the number of seats booked to zero for all flights.
+     */
 	public void setSeatBookedToZero() {
 		List<Flight> flights = flightDao.showAllFlights();
 		for(Flight flight: flights) {

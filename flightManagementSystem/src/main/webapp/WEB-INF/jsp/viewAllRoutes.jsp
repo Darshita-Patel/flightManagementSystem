@@ -1,83 +1,3 @@
-<!-- %@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="ISO-8859-1">
-    <title>View All Routes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #00D9A5;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        h3 {
-            color: #333;
-        }
-        a {
-        	display: inline-block;
-        	padding: 10px 20px;
-        	border-radius: 5px;
-        	background-color: #00D9A5;
-        	color: #fff;
-        	text-decoration: none;
-        	font-size: 16px;
-        	margin-top: 3px;
-    	}
-    	a:hover {
-        	background-color: #009970;
-    	}
-    </style>
-</head>
-<body>
-<div align="center">
-<h3>Displaying All Routes Data</h3>
-<table>
-<thead>
-<tr>
-<th>Route Id</th>
-<th>Source Airport Code</th>
-<th>Department Airport Code</th>
-<th>Ticket Cost</th>
-<th>View Flights on this Route</th>
-</tr>
-</thead>
-<tbody>
-<c:forEach var="route" items="${list}">
-<tr>
-<td>${route.routeId}</td>
-<td>${route.sourceAirportCode}</td>
-<td>${route.destinationAirportCode}</td>
-<td>${route.ticketCost}</td>
-<td><a href="/viewFlightOnRoute/${route.routeId}">View</a></td>
-</tr>
-</c:forEach>
-</tbody>
-</table>
-<a href="/start">Back</a>
-</div>
-</body>
-</html -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="header.jsp" %>
@@ -99,7 +19,7 @@
                         <li class="breadcrumb-item">
                             <i class="fa fa-home"></i>
                         </li>
-                        <li class="breadcrumb-item">Route</li>
+                        <li class="breadcrumb-item">Routes</li>
                         <li class="breadcrumb-item">View All Routes</a></li>
                     </ul>
                 </div>

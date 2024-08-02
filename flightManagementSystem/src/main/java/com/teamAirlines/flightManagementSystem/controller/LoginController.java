@@ -37,16 +37,19 @@ public class LoginController {
 	@Autowired 
 	private BCryptPasswordEncoder bCrypt;
 	
+	// Display the login page
 	@GetMapping("/loginpage")
 	public ModelAndView showLoginPage() {
 		return new ModelAndView("loginPage");
 	}
 	
+	// Display the login error page
 	@GetMapping("/loginerror")
 	public ModelAndView showLoginErrorPage() {
 		return new ModelAndView("loginError");
 	}
 	
+	// Display the index page based on user type
 	@GetMapping("/index")
 	public ModelAndView showIndexPage(HttpServletRequest request) {
 		String indexPage = "";
@@ -63,6 +66,7 @@ public class LoginController {
 		return mv;
 	}
 	
+	// Display the sign-up page
 	@GetMapping("/signup")
 	public ModelAndView showSignUpPage() {
 		FlightUser user = new FlightUser();
@@ -71,13 +75,16 @@ public class LoginController {
 		return mv;
 	}
 	
+	// Handle user sign-up
 	@PostMapping("/signup")
 	public ModelAndView saveSignUpPage(@ModelAttribute("userRecord") FlightUser user) {
 		String encodedPassword = bCrypt.encode(user.getPassword());
+		// Check for duplicate usernames
 		Optional<FlightUser> temp = repository.findById(user.getUsername());		
 		if(temp.isPresent()) {
 			throw new DuplicateUsernameException();
 		}
+		// Save the new user
 		FlightUser newUser=new FlightUser();
 		newUser.setUsername(user.getUsername());
 		newUser.setPassword(encodedPassword);
@@ -86,11 +93,13 @@ public class LoginController {
 		return new ModelAndView("loginPage");
 	}
 	
+	// Mapping to handle logout
 	@GetMapping("/logout")
 	public ModelAndView showLogoutPage() {
 		return new ModelAndView("loginPage");
 	}
 	
+	 // Handle DuplicateUsernameException
 	@ExceptionHandler(value = DuplicateUsernameException.class)
 	 public ModelAndView handlingDuplicateUsernameException(DuplicateUsernameException duplicateUsernameException) {
 		 return new ModelAndView("duplicateUsernameError");

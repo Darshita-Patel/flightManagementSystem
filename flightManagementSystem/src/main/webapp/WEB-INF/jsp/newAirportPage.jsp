@@ -56,7 +56,7 @@
                                             <button type="reset" class="btn btn-inverse waves-effect waves-light">Reset</button>
                                         </div>
                                     </form:form>
-                                    <a href="/index" class="btn btn-secondary">Return</a>
+                                    <a href="/index" class="btn btn-secondary">Back</a>
                                 </div>
                             </div>
                         </div>

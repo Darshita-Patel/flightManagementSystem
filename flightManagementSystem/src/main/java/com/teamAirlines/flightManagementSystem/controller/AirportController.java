@@ -23,6 +23,7 @@ public class AirportController {
 	@Autowired
 	private AirportDao airportDao;
 	
+	// Show the page for adding a new airport
 	@GetMapping("/newAirport")
 	public ModelAndView showNewAirportPage() {
 		Airport airport = new Airport();
@@ -31,22 +32,29 @@ public class AirportController {
 		return mv;
 	}
 	
+	 // Handle the submission of the new airport form
 	@PostMapping("/newAirport")
 	public ModelAndView saveNewAirportPage(@ModelAttribute ("airport_data") Airport airport) {
+		// Convert airport code and location to uppercase
 		String str = airport.getAirportCode().toUpperCase();
 		airport.setAirportCode(str);
 		String stg = airport.getAirportLocation().toUpperCase();
 		airport.setAirportLocation(stg);
+		
+		 // Check for duplicate airport code
 		List<String> codes = airportDao.findAllAirportCodes();
 		for(String s : codes) {
 			if(str.equalsIgnoreCase(s)) {
 				throw new DuplicateAirportCodeException();
 			}
 		}
+		
+		// Add the new airport to the database
 		airportDao.addAirport(airport);
 		return new ModelAndView("redirect:/index");
 	}
 	
+	 // Show the page with the list of all airports
 	@GetMapping("/viewAllAirports")
 	public ModelAndView showViewAllAirportPage() {
 		List <Airport> li = airportDao.showAllAirports();
@@ -55,7 +63,7 @@ public class AirportController {
 		return mv;
 	}
 	
-	
+	// Show the page for updating an airport's details
 	@GetMapping("/updateAirport/{id}")
 	 public ModelAndView showUpdateAirportPage(@PathVariable("id") String id) {
 	     Airport airport = airportDao.showAirport(id);
@@ -64,14 +72,19 @@ public class AirportController {
 	     return mv;
 	 }
 	
+	// Handle the submission of the updated airport details
 	@PostMapping("/saveAirportUpdate")
 	public ModelAndView showUpdateAirportSuccessfulPage(@ModelAttribute("airport") Airport airport) {
+		// Convert airport location to uppercase
 		String str = airport.getAirportLocation().toUpperCase();
 		airport.setAirportLocation(str);
+		
+		// Update the airport in the database
 		airportDao.addAirport(airport);
 		return new ModelAndView("redirect:/viewAllAirports");
 	}
 	
+	// Handle the exception for duplicate airport code
 	 @ExceptionHandler(value = DuplicateAirportCodeException.class)
 	 public ModelAndView handlingDuplicateAirportCodeException(DuplicateAirportCodeException duplicateAirportCodeException) {
 		 return new ModelAndView("airportCodeError");

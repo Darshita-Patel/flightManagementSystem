@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item">
                             <i class="fa fa-home"></i>
                         </li>
-                        <li class="breadcrumb-item">Route
+                        <li class="breadcrumb-item">Routes
                         </li>
                         <li class="breadcrumb-item">View All Routes
                         </li>

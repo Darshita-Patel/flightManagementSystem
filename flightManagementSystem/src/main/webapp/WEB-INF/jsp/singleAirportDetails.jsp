@@ -19,11 +19,11 @@
                         <li class="breadcrumb-item">
                             <i class="fa fa-home"></i>
                         </li>
-                        <li class="breadcrumb-item">Airport
+                        <li class="breadcrumb-item">Airports
                         </li>
-                        <li class="breadcrumb-item">View All Airport
+                        <li class="breadcrumb-item">View All Airports
                         </li>
-                        <li class="breadcrumb-item">Update Airport Details
+                        <li class="breadcrumb-item">Update
                         </li>
                     </ul>
                 </div>

@@ -67,6 +67,7 @@ public class FlightBookingController {
 	@Autowired
 	private FlightDatewiseDao flightDatewiseDao;
 	
+	// Display the page for selecting flight routes
 	@GetMapping("/flightSearch")
 	 public ModelAndView showRouteSelectPage() {
 		 List<String> locationList = airportDao.findAllAirportLocations();
@@ -75,6 +76,7 @@ public class FlightBookingController {
 	     return mv;
 	 }
 	 
+	// Handle flight search based on selected route
 	 @PostMapping("/flightSearch")
 	 public ModelAndView showRouteFlightsPage(@RequestParam("fromCity") String fromCity,@RequestParam("toCity") String toCity, HttpSession session ) {
 		String fromAirport = airportDao.findAirportCodeByLocation(fromCity);
@@ -110,6 +112,7 @@ public class FlightBookingController {
 	    return mv;
 	 }
 	 
+	 // Display the booking page for the selected flight
 	 @PostMapping("/bookFlight")
 	 public ModelAndView showBookingPage(@RequestParam("carrierName") String carrierName, 
 	                                     @RequestParam("flightNumber") Long flightNumber, 
@@ -140,7 +143,7 @@ public class FlightBookingController {
 	     return mv;
 	 }
 
-	 	 
+	// Confirm the booking and display the ticket page
 	 @PostMapping("/confirmBooking")
 	 public ModelAndView showTicketPage(@ModelAttribute("ticketRecord") Ticket ticket, HttpServletRequest request, HttpSession session) {
 		 ModelAndView mv = new ModelAndView("ticketPage");
@@ -191,6 +194,7 @@ public class FlightBookingController {
 		 return mv;
 	 }
 	 
+	// Save ticket and passenger details to the database
 	 @GetMapping("/payment")
 	 public ModelAndView showConfirmTicketPage(HttpSession session) {
 		 Ticket ticket = (Ticket)session.getAttribute("ticket");
@@ -209,11 +213,13 @@ public class FlightBookingController {
 		 return new ModelAndView("redirect:/index");
 	 }
 	 
+	// Display the page to select a ticket number for cancellation
 	 @GetMapping("/cancelBooking")
 	 public ModelAndView showTicketNumberSelectPage() {
 		 return new ModelAndView("selectTicketNumber");
 	 }
 	 
+	 // Display the details of the ticket to be canceled
 	 @PostMapping("/cancelBooking")
 	 public ModelAndView showTicketPage(@RequestParam("ticketNumber") Long ticketNumber, HttpSession session) {
 		 Ticket ticket = ticketDao.findByTicketNumber(ticketNumber);
@@ -234,6 +240,7 @@ public class FlightBookingController {
 		 return mv;
 	 }
 	 
+	// Cancel the ticket and update the database
 	 @GetMapping("/cancel")
 	 public ModelAndView showTicket(HttpSession session) {
 		 Ticket ticket = (Ticket) session.getAttribute("ticket");
@@ -254,6 +261,7 @@ public class FlightBookingController {
 		 return new ModelAndView("redirect:/index");
 	 }
 	 
+	// Display all tickets
 	 @GetMapping("/viewAllTickets")
 	 public ModelAndView showAllTicketsPage() {
 		 List<Ticket> li = ticketDao.showAllTickets();
@@ -262,6 +270,7 @@ public class FlightBookingController {
 		 return mv;
 	 }
 	 
+	// Display all passenger details
 	 @GetMapping("/viewAllPassengerDetails")
 	 public ModelAndView showAllPassengerDetails() {
 		 List<Passenger> li = passengerDao.showAllPassengerDetails();
@@ -270,21 +279,25 @@ public class FlightBookingController {
 		 return mv;
 	 }
 	 
+	 // Handle RouteNotFoundException
 	 @ExceptionHandler(value = RouteNotFoundException.class)
 	 public ModelAndView handlingRouteNotFoundException(RouteNotFoundException routeNotFoundException) {
 		 return new ModelAndView("routeError");
 	 }
 	 
+	// Handle FlightNotFoundException
 	 @ExceptionHandler(value = FlightNotFoundException.class)
 	 public ModelAndView handlingFlightNotFoundException(FlightNotFoundException flightNotFoundException) {
 		 return new ModelAndView("flightError");
 	 }
 	 
+	// Handle SeatNotFoundException
 	 @ExceptionHandler(value = SeatNotFoundException.class)
 	 public ModelAndView handlingSeatNotFoundException(SeatNotFoundException seatNotFoundException) {
 		 return new ModelAndView("seatError");
 	 }
 	 
+	// Handle TicketNotFoundException
 	 @ExceptionHandler(value = TicketNotFoundException.class)
 	 public ModelAndView handlingTicketNotFoundException(TicketNotFoundException ticketNotFoundException) {
 		 return new ModelAndView("ticketError");

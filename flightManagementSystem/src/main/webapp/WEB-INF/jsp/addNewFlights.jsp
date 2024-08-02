@@ -77,23 +77,20 @@
                                         <div class="form-group row">
                                             <label for="returnDeparture" class="col-sm-2 col-form-label">Enter Return Flight's Departure Time:</label>
                                             <div class="col-sm-4">
-                                                <input type="time" id="dtime" name="dtime" class="form-control" placeholder="Enter Return Flight's Departure Time" required="true"/>
+                                                <input type="time" id="dtime" name="dtime" class="form-control" placeholder="Enter Return Flight's Departure Time" required/>
                                             </div>
                                             <label for="returnArrival" class="col-sm-2 col-form-label">Enter Return Flight's Arrival Time:</label>
                                             <div class="col-sm-4">
-                                                <input type="time" id="atime" name="atime" class="form-control" placeholder="Enter Return Flight's Arrival Time"  required="true"/>
+                                                <input type="time" id="atime" name="atime" class="form-control" placeholder="Enter Return Flight's Arrival Time"  required/>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-2"></div>
-                                            <div class="col-sm-10">
-                                                <button type="button" onclick="checkFields()" class="btn btn-primary waves-effect waves-light">Add</button>
-                                                <button type="reset" class="btn btn-inverse waves-effect waves-light">Reset</button>
-                                                <a href="/index" class="btn btn-secondary">Return</a>
-                                            </div>
+                                        <div class="form-group form-default form-static-label">
+                                            <button type="button" onclick="checkFields()" class="btn btn-primary waves-effect waves-light">Add</button>
+                                            <button type="reset" class="btn btn-inverse waves-effect waves-light">Reset</button>
                                         </div>
                                     </form:form>
-                                </div>
+                                    <a href="/index" class="btn btn-secondary">Back</a>
+                                </div>                                        
                             </div>
                         </div>
                     </div>
